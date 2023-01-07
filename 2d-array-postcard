@@ -1,0 +1,47 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.println("I like you so much, Kate");
+
+        char[][] postcard = new char[6][7];
+        char paw = 'x';
+        int r = 0;
+
+        for (int i = 5; i >= 0; i--) {
+            for (int k = 6; k >= 0; k--) {
+                postcard[i][k] = ' ';
+            }
+        }
+
+        for (int i = 5; i >= 2; i--) {
+            postcard[i][i - 2] = paw;
+            if (i == 4) {
+                postcard[i][i] = paw;
+            }
+            if (i < 4) {
+                r++;
+                postcard[i][r + 4] = paw;
+            }
+        }
+
+        for (int i = 1; i >= 0; i--) {
+            if (i == 0) {
+                for (int k = 1; k < 7; k++) {
+                    if (k == 3 || k == 6){
+                        continue;
+                    }
+                    postcard[i][k] = paw;
+                }
+            } else for (int k = 0; k < 7; k = k + 3) {
+                postcard[i][k] = paw;
+            }
+        }
+
+        for (char[] arr : postcard) {
+            System.out.println(Arrays.toString(arr));
+        }
+
+    }
+}
